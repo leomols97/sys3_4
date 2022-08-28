@@ -15,6 +15,7 @@ AUTEUR : J.C. Jaumain , 07/2011
 int main(int argc, char * argv[])
 {
     int i, fd;
+    
     char * tokens[300];
     char * command;
     command = (char*) malloc(300);
