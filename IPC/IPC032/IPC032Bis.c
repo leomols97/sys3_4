@@ -1,12 +1,6 @@
-/*
-ipc029 : Écrivez 3 process.
-Synchronisez ces process de telle façon que le process 3 ne peut s’exécuter que
-quand les process 1 et 2 sont terminés.
-L’ordre de lancement des process est quelconque.
-Prouvez que votre synchronisation est correcte.
-Vous devez utiliser les sémaphores SystemV pour résoudre cet exercice.
-*/
-
+/**
+ Ipc032 : Un process crée une réserve de N cacahouètes. N est un nombre compris entre 1000 et 2000. 3 processus fils sont des mangeurs de cacahouètes (M à la fois). M est un nombre aléatoire compris entre 100 et 200. Les processus fils affichent sur 3 lignes "je suis le processus <pid> , je vole M cacahuètes, je pars". Les fils meurent quand il ne reste plus suffisament de cacahouètes dans la réserve. Le parent meurt quand les 3 fils sont morts. Les messages ne peuvent pas être mélangés et le nombre de cachuètes disponibles respecté. Vous ne pouvez pas utiliser de mémoire partagée dans cet exercice.
+ */
 #include <sys/types.h>
 #include <sys/ipc.h>
 #include <sys/sem.h>
@@ -57,11 +51,10 @@ void zero(int sem)
     while(sem != 0)
         pause();
 }
-
-int sem, semUn, semDeux;
-char un = 0;
-char deux = 0;
-
+int randomBetween(int min, int max)
+{
+    return (rand() % (max - min + 1)) + min;
+}
 void creatChild(int nb)
 {
     if(fork() == 0)
@@ -88,7 +81,20 @@ void creatChild(int nb)
     }
 }
 
-int main(int argc, char *argv[]){
+
+int sem, semUn, semDeux;
+char un = 0;
+char deux = 0;
+
+int main(int argc, char *argv[])
+{
+    int filsUnMange = randomBetween(100, 200);
+    int pidFils1;
+    int filsDeuxMange = randomBetween(100, 200);
+    int pidFils2;
+    int filsTroisMange = randomBetween(100, 200);
+    int pidFils3;
+    
     sem = creeSem();
     initsem(sem, 1); //1 car 1 seul a la fois dans la SC
 

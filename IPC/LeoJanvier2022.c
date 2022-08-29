@@ -61,7 +61,7 @@ int main(int argc, char * argv[])
             if (s==1)
                 opsem(sem, -1); // down
             execlp("echo", "echo", "Bonjour, ", 0);
-            sprintf(errorMsg, "echo didn't went well\n");
+            sprintf(errorMsg, "execlp didn't went well\n");
             perror(errorMsg);
         }
         if (s==1)
@@ -73,7 +73,7 @@ int main(int argc, char * argv[])
             if (s==1)
                 opsem(sem, -1); // down
             execlp("echo", "echo", "il fait beau\n", 0);
-            sprintf(errorMsg, "echo didn't went well\n");
+            sprintf(errorMsg, "execlp didn't went well\n");
             perror(errorMsg);
         }
         if (s==1)
