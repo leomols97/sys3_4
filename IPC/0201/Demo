@@ -1,0 +1,28 @@
+#!/bin/bash
+#NOM    : Demo
+#CLASSE : IPC - LaboIPC 02-01
+#OBJET  : réservé au makefile
+#AUTEUR	: J.C. Jaumain, 07/2011
+
+C='\033[44m'
+E='\033[32m\033[1m'
+W='\033[31m\033[1m'
+N='\033[0m'
+clear
+echo "Démonstration du programme Critique.c"
+echo -e "Remarque : la commande ${E}quit${N} permet de quitter le process"
+echo "------------------------------------------------------------------"
+echo
+echo "Cas numéro 1 : on synchronise les deux process"
+echo "----------------------------------------------"
+echo -e "Exécution de ${E}./Critique${N} "
+echo -e "entrez des caractères ou  ${E}quit${N} pour chacun des deux process pour les arrêter proprement :"
+./Critique
+echo -e "${C}             --> Enter pour continuer${N}"; read
+clear
+echo "Cas numéro 2 : on ne synchronise pas les deux process"
+echo "-----------------------------------------------------"
+echo -e "Exécution de ${E}./Critique ns${N}"
+echo -e "entrez des caractères ou  ${E}quit${N} pour chacun des deux process pour les arrêter proprement :"
+./Critique ns
+echo -e "${C}             --> Enter pour continuer${N}"; read
