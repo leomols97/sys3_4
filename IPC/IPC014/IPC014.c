@@ -13,7 +13,7 @@ int opsem ( int sem , int i)
 {
     int n;
     struct sembuf op [1];
-    op [0].sem_num = 0; // premier et unique sé maphore
+    op [0].sem_num = 0; // premier et unique s√© maphore
     op [0].sem_op = i ;
     op [0].sem_flg = 0;
     if ((n= semop (sem,op,1))== -1)

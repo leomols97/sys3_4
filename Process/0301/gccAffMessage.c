@@ -1,6 +1,6 @@
 /*
 NOM : gccAffMessage.c
-CLASSE : Process - LaboProcess 02-02 #OBJET : réservé au Makefile
+CLASSE : Process - LaboProcess 02-02 #OBJET : r√©serv√© au Makefile
 AUTEUR : J.C. Jaumain , 07/2011
 */
 #include <stdio.h>

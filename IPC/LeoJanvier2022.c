@@ -1,7 +1,7 @@
 /**
- Créer un programme qui crée 2 process : l'un affiche 'Bonjour, ', l'autre 'il fait beau\n', chacun à leur tour
+ Cr√©er un programme qui cr√©e 2 process : l'un affiche 'Bonjour, ', l'autre 'il fait beau\n', chacun √† leur tour
  
- Résultat à avoir (peut avoir plus ou moins de ligne que cela, mais minimum une, je pense) :
+ R√©sultat √† avoir (peut avoir plus ou moins de ligne que cela, mais minimum une, je pense) :
  Bonjour, il fait beau
  Bonjour, il fait beau
  Bonjour, il fait beau
@@ -22,7 +22,7 @@ int opsem(int sem, int i)
     int n;
     struct sembuf op[1];
     
-    op[0].sem_num = 0; // premier et unique sémaphore
+    op[0].sem_num = 0; // premier et unique s√©maphore
     op[0].sem_op = i;
     op[0].sem_flg = SEM_UNDO; //
     
@@ -46,7 +46,7 @@ int main(int argc, char * argv[])
             exit(-1);
         }
 
-        // SETVAL : Mettre un des sémaphores à la valeur spécifiée : le dernier argument, soit à 1
+        // SETVAL : Mettre un des s√©maphores √† la valeur sp√©cifi√©e : le dernier argument, soit √† 1
 //        if (semctl(sem,0,SETVAL,1) == -1) // une ressource pour une SC
 //        {
 //            perror ("semctl");

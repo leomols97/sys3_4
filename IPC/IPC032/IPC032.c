@@ -1,5 +1,5 @@
 /**
- Ipc032 : Un process crée une réserve de N cacahouètes. N est un nombre compris entre 1000 et 2000. 3 processus fils sont des mangeurs de cacahouètes (M à la fois). M est un nombre aléatoire compris entre 100 et 200. Les processus fils affichent sur 3 lignes "je suis le processus <pid> , je vole M cacahuètes, je pars". Les fils meurent quand il ne reste plus suffisament de cacahouètes dans la réserve. Le parent meurt quand les 3 fils sont morts. Les messages ne peuvent pas être mélangés et le nombre de cachuètes disponibles respecté. Vous ne pouvez pas utiliser de mémoire partagée dans cet exercice.
+ Ipc032 : Un process cr√©e une r√©serve de N cacahou√®tes. N est un nombre compris entre 1000 et 2000. 3 processus fils sont des mangeurs de cacahou√®tes (M √† la fois). M est un nombre al√©atoire compris entre 100 et 200. Les processus fils affichent sur 3 lignes "je suis le processus <pid> , je vole M cacahu√®tes, je pars". Les fils meurent quand il ne reste plus suffisament de cacahou√®tes dans la r√©serve. Le parent meurt quand les 3 fils sont morts. Les messages ne peuvent pas √™tre m√©lang√©s et le nombre de cachu√®tes disponibles respect√©. Vous ne pouvez pas utiliser de m√©moire partag√©e dans cet exercice.
  */
 #include <sys/types.h>
 #include <sys/ipc.h>
@@ -15,7 +15,7 @@ int opsem(int sem, int i)
     int n;
     struct sembuf op[1];
     
-    op[0].sem_num = 0; // premier et unique sémaphore
+    op[0].sem_num = 0; // premier et unique s√©maphore
     op[0].sem_op = i;
     op[0].sem_flg = SEM_UNDO; //
     
@@ -45,7 +45,7 @@ int main(int argc, char * argv[])
             exit(-1);
         }
         
-        // SETVAL : Mettre un des sémaphores à la valeur spécifiée : le dernier argument, soit à 1
+        // SETVAL : Mettre un des s√©maphores √† la valeur sp√©cifi√©e : le dernier argument, soit √† 1
         //        if (semctl(sem,0,SETVAL,1) == -1) // une ressource pour une SC
         //        {
         //            perror ("semctl");

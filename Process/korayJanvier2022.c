@@ -1,7 +1,7 @@
 /**
- Commande à reproduire  : ls -l | cut-c2-10 > out
+ Commande  reproduire  : ls -l | cut-c2-10 > out
  
- Résultat à avoir (peut avoir plus ou moins de ligne que cela, mais minimum une, je pense) :
+ Rsultat  avoir (peut avoir plus ou moins de ligne que cela, mais minimum une, je pense) :
   otal 96
  rwxr-xr-x
  rwxr-xr-x
@@ -54,12 +54,12 @@ int main(int argc, char * argv[])
         {
 //            if(i > 1 && (strcmp(tokens[i-2],">") == 0))
 //            {
-                fd = open("out", O_CREAT | O_WRONLY | O_TRUNC, 0666);
-                dup2(fd,1); // dup2 est nécessaire pour mettre ce vers quoi pointe fd dans le fichier vers lequel le contenu doit être redirigé
+                fd = open("out.txt", O_CREAT | O_WRONLY | O_TRUNC, 0666);
+                dup2(fd,1); // dup2 est ncessaire pour mettre ce vers quoi pointe fd dans le fichier vers lequel le contenu doit tre redirig
                 close(fd);
 //                tokens[i-2] = 0; // Car tokens contient des entiers
 //            }
-//            execvp(tokens[0], tokens);
+            execvp(tokens[0], tokens);
 //            sprintf(errorMsg, "exec <%s>", tokens[0]);
 //            perror(errorMsg);
         }

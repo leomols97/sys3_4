@@ -1,10 +1,10 @@
 /*
-ipc029 : Écrivez 3 process.
-Synchronisez ces process de telle façon que le process 3 ne peut s’exécuter que
-quand les process 1 et 2 sont terminés.
-L’ordre de lancement des process est quelconque.
+ipc029 : √âcrivez 3 process.
+Synchronisez ces process de telle fa√ßon que le process 3 ne peut s‚Äôex√©cuter que
+quand les process 1 et 2 sont termin√©s.
+L‚Äôordre de lancement des process est quelconque.
 Prouvez que votre synchronisation est correcte.
-Vous devez utiliser les sémaphores SystemV pour résoudre cet exercice.
+Vous devez utiliser les s√©maphores SystemV pour r√©soudre cet exercice.
 */
 
 #include <sys/types.h>
@@ -73,7 +73,7 @@ void creatChild(int nb)
         }
         down(sem);
         
-        //début de la section critique
+        //d√©but de la section critique
         if(nb == 1)
             up(semUn);
         if(nb == 2)
@@ -93,10 +93,10 @@ int main(int argc, char *argv[]){
     initsem(sem, 1); //1 car 1 seul a la fois dans la SC
 
     semUn = creeSem();
-    initsem(semUn, 0); //0 donc directement bloqué tant que y a pas de up(ligne 78)
+    initsem(semUn, 0); //0 donc directement bloqu√© tant que y a pas de up(ligne 78)
 
     semDeux = creeSem();
-    initsem(semUn, 0); //bloqué, attends le up de la ligne 80
+    initsem(semUn, 0); //bloqu√©, attends le up de la ligne 80
 
     int nbProcess = 3;
 

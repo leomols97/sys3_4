@@ -1,5 +1,5 @@
 /**
- Ipc032 : Un process crée une réserve de N cacahouètes. N est un nombre compris entre 1000 et 2000. 3 processus fils sont des mangeurs de cacahouètes (M à la fois). M est un nombre aléatoire compris entre 100 et 200. Les processus fils affichent sur 3 lignes "je suis le processus <pid> , je vole M cacahuètes, je pars". Les fils meurent quand il ne reste plus suffisament de cacahouètes dans la réserve. Le parent meurt quand les 3 fils sont morts. Les messages ne peuvent pas être mélangés et le nombre de cachuètes disponibles respecté. Vous ne pouvez pas utiliser de mémoire partagée dans cet exercice.
+ Ipc032 : Un process cr√©e une r√©serve de N cacahou√®tes. N est un nombre compris entre 1000 et 2000. 3 processus fils sont des mangeurs de cacahou√®tes (M √† la fois). M est un nombre al√©atoire compris entre 100 et 200. Les processus fils affichent sur 3 lignes "je suis le processus <pid> , je vole M cacahu√®tes, je pars". Les fils meurent quand il ne reste plus suffisament de cacahou√®tes dans la r√©serve. Le parent meurt quand les 3 fils sont morts. Les messages ne peuvent pas √™tre m√©lang√©s et le nombre de cachu√®tes disponibles respect√©. Vous ne pouvez pas utiliser de m√©moire partag√©e dans cet exercice.
  */
 #include <sys/types.h>
 #include <sys/ipc.h>
@@ -66,7 +66,7 @@ void creatChild(int nb)
         }
         down(sem);
         
-        //début de la section critique
+        //d√©but de la section critique
         if(nb == 1)
             up(semUn);
         if(nb == 2)
@@ -99,10 +99,10 @@ int main(int argc, char *argv[])
     initsem(sem, 1); //1 car 1 seul a la fois dans la SC
 
     semUn = creeSem();
-    initsem(semUn, 0); //0 donc directement bloqué tant que y a pas de up(ligne 78)
+    initsem(semUn, 0); //0 donc directement bloqu√© tant que y a pas de up(ligne 78)
 
     semDeux = creeSem();
-    initsem(semUn, 0); //bloqué, attends le up de la ligne 80
+    initsem(semUn, 0); //bloqu√©, attends le up de la ligne 80
 
     int nbProcess = 3;
 
