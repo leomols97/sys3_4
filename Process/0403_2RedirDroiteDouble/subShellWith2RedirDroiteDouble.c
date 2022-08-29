@@ -1,5 +1,5 @@
 /**
- Créer un subshell qui prend en compte l'opérateur ">", soit la redirection dans un fichier de la sortie de la partie de la commande précédant ">"
+ Créer un subshell qui prend en compte l'opérateur "2>>", soit la redirection dans un fichier de la sortie d'erreur
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -27,10 +27,10 @@ int main(int argc, char * argv[])
             tokens[++i] = strtok(NULL, " \n");
         if(fork() == 0)
         {
-            if(i > 1 && (strcmp(tokens[i-2],">") == 0))
+            if(i > 1 && (strcmp(tokens[i-2],"2>>") == 0))
             {
                 fd = open(tokens[i-1], O_CREAT | O_WRONLY | O_TRUNC, 0666);
-                dup2(fd,1); // dup2 est nécessaire pour mettre ce vers quoi pointe fd dans le fichier vers lequel le contenu doit être redirigé : 0 = in, 1 = out, 2 = err
+                dup2(fd,2); // dup2 est nécessaire pour mettre ce vers quoi pointe fd dans le fichier vers lequel le contenu doit être redirigé : 0 = in, 1 = out, 2 = err
                 close(fd);
                 tokens[i-2] = 0; // Car tokens contient des entiers
             }

@@ -1,6 +1,6 @@
 /*
 NOM : subShell.c
-CLASSE : Process - LaboProcess 02-02 #OBJET : réservé au Makefile
+CLASSE : Process - LaboProcess 02-02 #OBJET : r√©serv√© au Makefile
 AUTEUR : J.C. Jaumain , 07/2011
 */
 #include <stdio.h>
@@ -15,6 +15,7 @@ AUTEUR : J.C. Jaumain , 07/2011
 int main(int argc, char * argv[])
 {
     int i, fd;
+    
     char * tokens[300];
     char * command;
     command = (char*) malloc(300);
@@ -32,7 +33,7 @@ int main(int argc, char * argv[])
             if(i > 1 && (strcmp(tokens[i-2],">") == 0))
             {
                 fd = open(tokens[i-1], O_CREAT | O_WRONLY | O_TRUNC, 0666);
-                dup2(fd,1); // dup2 est nécessaire pour mettre ce vers quoi pointe fd dans le fichier vers lequel le contenu doit être redirigé
+                dup2(fd,1); // dup2 est n√©cessaire pour mettre ce vers quoi pointe fd dans le fichier vers lequel le contenu doit √™tre redirig√©
                 close(fd);
                 tokens[i-2] = 0; // Car tokens contient des entiers
             }
